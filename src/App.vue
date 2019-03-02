@@ -1,29 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <App-Header/>
+    <App-Side-Menu/>
+    <Data-Sources/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+  import Header from "./components/Header.vue"
+  import SideMenu from "./components/SideMenu.vue"
+  import DataSources from "./components/DataSources.vue"
+  export default {
+    components:{
+      AppHeader:Header,
+      AppSideMenu:SideMenu,
+      DataSources:DataSources
     }
-  }
 }
+</script>
+
+<style lang="scss">
+  @import './assets/sass/reset.scss';
+  @import './assets/sass/main.scss';
+  @font-face {
+  font-family: 'GothamMedium';
+    src: url('./assets/fonts/GothamMedium.eot?#iefix') format('embedded-opentype'),
+          url('./assets/fonts/GothamMedium.woff') format('woff'), 
+          url('./assets/fonts/GothamMedium.ttf')  format('truetype'), 
+          url('./assets/fonts/GothamMedium.svg#GothamMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
 </style>

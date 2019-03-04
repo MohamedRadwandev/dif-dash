@@ -1,7 +1,8 @@
 <template>
 	<div class="contentSection">
 		<div class="dataSources">
-            <div class="oneDataSource" v-for="(datasource,index) in dataSources" :class="{active:datasource.showAccounts, disabled:datasource.disabled}" >
+
+            <!-- <div class="oneDataSource" v-for="(datasource,index) in dataSources" :class="{active:datasource.showAccounts, disabled:datasource.disabled}" >
                  <div class="row">
                     <div class="col-md-4">
                         <ul>
@@ -44,14 +45,19 @@
                         <font-awesome-icon icon="trash-alt" @click="removeAcc(index,i)" />
                     </li>
                 </ul>              
-            </div>
+            </div> -->
+        <DataSource v-for="dataSource in dataSources" :datasource="dataSource" />
         </div>
     </div>
 </template>
 
 
 <script>
+import DataSource from "./DataSource.vue";
 export default {
+    components:{
+        DataSource:DataSource
+    },
     data:function(){
         return{
             dataSources:[
@@ -96,10 +102,8 @@ export default {
     methods:{
         toggleAcc(i){
             this.dataSources[i].showAccounts = !this.dataSources[i].showAccounts;
-        },
-        removeAcc(i,k){
-            this.dataSources[i].accounts.splice(k,1)
         }
+        
     }
 }
 </script>
